@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مرصد اليمن الذكي - المنصة الإخبارية الشاملة</title>
+    <style>
+        :root {
+            --primary-color: #0f172a;
+            --accent-color: #2563eb;
+            --secondary-color: #f8fafc;
+            --text-color: #334155;
+            --border-color: #e2e8f0;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--secondary-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 1rem;
+            text-align: center;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        /* شريط أسعار الذهب والمشتقات النفطية */
+        .economy-ticker {
+            background-color: #1e293b;
+            color: #f1f5f9;
+            padding: 0.5rem 1rem;
+            font-size: 0.85rem;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1.5rem;
+            border-bottom: 2px solid #334155;
+        }
+
+        .ticker-item span {
+            font-weight: bold;
+            color: #38bdf8;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .nav-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            background-color: white;
+            border: 1px solid var(--border-color);
+            padding: 0.5rem 1.25rem;
+            border-radius: 9999px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+
+        .tab-btn.active, .tab-btn:hover {
+            background-color: var(--accent-color);
+            color: white;
+            border-color: var(--accent-color);
+        }
+
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .news-card {
+            background: white;
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            border: 1px solid var(--border-color);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .news-source {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            background: #e0f2fe;
+            color: #0369a1;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            align-self: flex-start;
+            margin-bottom: 0.75rem;
+            font-weight: bold;
+        }
+
+        .news-title {
+            font-size: 1.1rem;
+            font-weight: bold;
+            margin-bottom: 0.75rem;
+            color: var(--primary-color);
+        }
+
+        .news-snippet {
+            font-size: 0.9rem;
+            color: #64748b;
+            margin-bottom: 1rem;
+        }
+
+        .news-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.8rem;
+            border-top: 1px solid var(--border-color);
+            padding-top: 0.75rem;
+        }
+
+        .news-link {
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .news-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>مرصد اليمن الذكي</h1>
+        <p>النافذة الشاملة لأخبار اليمن من الصحف العالمية، العربية، والمحلية لحظة بلحظة</p>
+    </header>
+
+    <!-- شريط أسعار الذهب والمشتقات النفطية -->
+    <div class="economy-ticker">
+        <div class="ticker-item">🛢️ بترول (صنعاء): <span>9,500 ر.ي / 20لتر</span></div>
+        <div class="ticker-item">⛽ ديزل (صنعاء): <span>10,000 ر.ي / 20
