@@ -25,7 +25,7 @@
         header {
             background-color: var(--primary-color);
             color: white;
-            padding: 1rem;
+            padding: 1.5rem 1rem;
             text-align: center;
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
         }
@@ -34,7 +34,7 @@
         .economy-ticker {
             background-color: #1e293b;
             color: #f1f5f9;
-            padding: 0.5rem 1rem;
+            padding: 0.6rem 1rem;
             font-size: 0.85rem;
             display: flex;
             flex-wrap: wrap;
@@ -150,4 +150,119 @@
     <!-- شريط أسعار الذهب والمشتقات النفطية -->
     <div class="economy-ticker">
         <div class="ticker-item">🛢️ بترول (صنعاء): <span>9,500 ر.ي / 20لتر</span></div>
-        <div class="ticker-item">⛽ ديزل (صنعاء): <span>10,000 ر.ي / 20
+        <div class="ticker-item">⛽ ديزل (صنعاء): <span>10,000 ر.ي / 20لتر</span></div>
+        <div class="ticker-item">🛢️ بترول (عدن): <span>21,000 ر.ي / 20لتر</span></div>
+        <div class="ticker-item">⚡ غاز منزلي: <span>11,000 ر.ي</span></div>
+        <div class="ticker-item">🪙 عيار 21 (الذهب): <span>~48,000 ر.ي للجرام</span></div>
+    </div>
+
+    <div class="container">
+        <!-- أزرار تصنيف المصادر -->
+        <div class="nav-tabs">
+            <button class="tab-btn active" onclick="filterNews('all')">جميع الأخبار</button>
+            <button class="tab-btn" onclick="filterNews('international')">الصحف العالمية الأجنبية</button>
+            <button class="tab-btn" onclick="filterNews('arab')">الصحف والمواقع العربية</button>
+            <button class="tab-btn" onclick="filterNews('local')">المصادر المحلية اليمنية</button>
+        </div>
+
+        <!-- شبكة الأخبار -->
+        <div class="news-grid" id="newsGrid">
+            <!-- خبر 1: دولي -->
+            <div class="news-card" data-category="international">
+                <div>
+                    <span class="news-source">رويترز (إعلام دولي)</span>
+                    <div class="news-title">مساعٍ أممية مكثفة لتثبيت الهدنة الإنسانية والاقتصادية في اليمن</div>
+                    <div class="news-snippet">تناولت الوكالة تفاصيل الحوارات الدبلوماسية الجارية لدعم مسار السلام الشامل ومعالجة التحديات النقدية والملف الإنساني الملتهب.</div>
+                </div>
+                <div class="news-footer">
+                    <span>منذ ساعة</span>
+                    <a href="#" class="news-link">قراءة المقال الأصلي &larr;</a>
+                </div>
+            </div>
+
+            <!-- خبر 2: دولي -->
+            <div class="news-card" data-category="international">
+                <div>
+                    <span class="news-source">بلومبرغ (إعلام دولي)</span>
+                    <div class="news-title">تحليلات اقتصادية حول تأثيرات خطوط الملاحة في البحر الأحمر على التجارة الدولية</div>
+                    <div class="news-snippet">تقرير عالمي يسلط الضوء على كلفة الشحن البديلة وتداعيات التوترات الإقليمية على اقتصاد المنطقة.</div>
+                </div>
+                <div class="news-footer">
+                    <span>منذ ساعتين</span>
+                    <a href="#" class="news-link">قراءة المقال الأصلي &larr;</a>
+                </div>
+            </div>
+
+            <!-- خبر 3: عربي -->
+            <div class="news-card" data-category="arab">
+                <div>
+                    <span class="news-source">الجزيرة نت (إعلام عربي)</span>
+                    <div class="news-title">تطورات الأوضاع الإنسانية وجهود الإغاثة في المحافظات اليمنية</div>
+                    <div class="news-snippet">تقرير شامل يسلط الضوء على حجم التدخلات الإنسانية الدولية والمحلية لتخفيف المعاناة المعيشية عن الأسر المتضررة.</div>
+                </div>
+                <div class="news-footer">
+                    <span>منذ 3 ساعات</span>
+                    <a href="#" class="news-link">قراءة المقال الأصلي &larr;</a>
+                </div>
+            </div>
+
+            <!-- خبر 4: عربي -->
+            <div class="news-card" data-category="arab">
+                <div>
+                    <span class="news-source">العربية نت (إعلام عربي)</span>
+                    <div class="news-title">لقاءات رسمية لبحث سبل تعزيز الاستقرار وتوفير الخدمات الأساسية</div>
+                    <div class="news-snippet">استعراض الجهود الحكومية والمؤسسية لتأمين الاحتياجات الخدمية الملحة للمواطنين في مختلف القطاعات.</div>
+                </div>
+                <div class="news-footer">
+                    <span>منذ 4 ساعات</span>
+                    <a href="#" class="news-link">قراءة المقال الأصلي &larr;</a>
+                </div>
+            </div>
+
+            <!-- خبر 5: محلي -->
+            <div class="news-card" data-category="local">
+                <div>
+                    <span class="news-source">وكالة سبأ / الصحف المحلية</span>
+                    <div class="news-title">إطلاق حزمة مشاريع خدمية وتنموية جديدة لتخفيف الأعباء عن المواطنين</div>
+                    <div class="news-snippet">تدشين أعمال تأهيل البنى التحتية وقطاع الطرق والخدمات الأساسية في عدة مديريات ومحافظات يمنية وسط ترحيب شعبي واسع.</div>
+                </div>
+                <div class="news-footer">
+                    <span>منذ 5 ساعات</span>
+                    <a href="#" class="news-link">قراءة المقال الأصلي &larr;</a>
+                </div>
+            </div>
+
+            <!-- خبر 6: محلي -->
+            <div class="news-card" data-category="local">
+                <div>
+                    <span class="news-source">صحف محلية مستقلة</span>
+                    <div class="news-title">مبادرات مجتمعية لرمم الطرقات الداخلية ودعم القطاع الزراعي المحلي</div>
+                    <div class="news-snippet">تكاتف جهود الأهالي والسلطات المحلية لتنفيذ مشاريع خدمية ذات طابع عاجل لتحسين ظروف المعيشة اليومية.</div>
+                </div>
+                <div class="news-footer">
+                    <span>منذ 6 ساعات</span>
+                    <a href="#" class="news-link">قراءة المقال الأصلي &larr;</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function filterNews(category) {
+            const cards = document.querySelectorAll('.news-card');
+            const buttons = document.querySelectorAll('.tab-btn');
+
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            cards.forEach(card => {
+                if (category === 'all' || card.dataset.category === category) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+    </script>
+</body>
+</html>
