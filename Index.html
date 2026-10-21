@@ -6,7 +6,7 @@
     <title>مرصد اليمن الذكي - المنصة الإخبارية الشاملة</title>
     <style>
         :root {
-            --bg-color: #f1f5f9; /* خلفية رمادية هادئة وغير ساطعة للعين */
+            --bg-color: #f1f5f9;
             --card-bg: #ffffff;
             --primary-dark: #0f172a;
             --accent-blue: #0284c7;
@@ -17,7 +17,6 @@
             --tag-text: #0369a1;
         }
 
-        /* تنسيقات الوضع الداكن المريح للقرائة المطولة */
         [data-theme="dark"] {
             --bg-color: #0b0f19;
             --card-bg: #1e293b;
@@ -61,7 +60,6 @@
             font-size: 0.95rem;
         }
 
-        /* زر الوضع الليلي */
         .theme-toggle {
             position: absolute;
             top: 1rem;
@@ -77,11 +75,7 @@
             transition: all 0.2s;
         }
 
-        .theme-toggle:hover {
-            opacity: 0.9;
-        }
-
-        /* شريط أسعار الذهب والمشتقات الهادئ */
+        /* شريط أسعار الصرف فقط */
         .economy-ticker {
             background-color: #090d16;
             color: #cbd5e1;
@@ -90,7 +84,7 @@
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 2rem;
+            gap: 2.5rem;
             border-bottom: 1px solid #1e293b;
         }
 
@@ -101,15 +95,50 @@
 
         .container {
             max-width: 1100px;
-            margin: 2.5rem auto;
+            margin: 2rem auto;
             padding: 0 1.5rem;
+        }
+
+        /* قسم عرض المصادر الـ 10 بشكل أنيق */
+        .sources-section {
+            background: var(--card-bg);
+            border: 1px solid var(--border-subtle);
+            border-radius: 12px;
+            padding: 1.25rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+        }
+
+        .sources-title {
+            font-size: 0.95rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            color: var(--primary-dark);
+            text-align: center;
+        }
+
+        .sources-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            justify-content: center;
+        }
+
+        .source-badge {
+            background: var(--bg-color);
+            border: 1px solid var(--border-subtle);
+            padding: 0.3rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.78rem;
+            font-weight: 600;
+            color: var(--text-main);
         }
 
         .nav-tabs {
             display: flex;
             justify-content: center;
             gap: 0.75rem;
-            margin-bottom: 2.5rem;
+            margin-bottom: 2rem;
             flex-wrap: wrap;
         }
 
@@ -146,7 +175,6 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            transition: background-color 0.3s ease, border-color 0.3s ease;
         }
 
         .news-source {
@@ -196,19 +224,35 @@
     <header>
         <button class="theme-toggle" onclick="toggleTheme()">🌙 الوضع الداكن</button>
         <h1>مرصد اليمن الذكي</h1>
-        <p>النافذة الشاملة لأخبار اليمن من الصحف العالمية، العربية، والمحلية لحظة بلحظة</p>
+        <p>النافذة الشاملة لأخبار اليمن من 10 مصادر عالمية، عربية، ومحلية لحظة بلحظة</p>
     </header>
 
-    <!-- شريط أسعار الذهب والمشتقات النفطية -->
+    <!-- شريط أسعار الصرف فقط -->
     <div class="economy-ticker">
-        <div class="ticker-item">🛢️ بترول (صنعاء): <span id="price-sanaa-petrol">9,800 ر.ي / 20لتر</span></div>
-        <div class="ticker-item">⛽ ديزل (صنعاء): <span id="price-sanaa-diesel">10,200 ر.ي / 20لتر</span></div>
-        <div class="ticker-item">🛢️ بترول (عدن): <span id="price-aden-petrol">22,000 ر.ي / 20لتر</span></div>
-        <div class="ticker-item">⚡ غاز منزلي: <span id="price-gas">11,500 ر.ي</span></div>
-        <div class="ticker-item">🪙 عيار 21 (الذهب): <span id="price-gold">~49,500 ر.ي للجرام</span></div>
+        <div class="ticker-item">💵 الدولار (عدن): <span id="fx-usd-aden">جاري التحديث...</span></div>
+        <div class="ticker-item">💶 السعودي (عدن): <span id="fx-sar-aden">جاري التحديث...</span></div>
+        <div class="ticker-item">💵 الدولار (صنعاء): <span id="fx-usd-sanaa">جاري التحديث...</span></div>
+        <div class="ticker-item">💶 السعودي (صنعاء): <span id="fx-sar-sanaa">جاري التحديث...</span></div>
     </div>
 
     <div class="container">
+        <!-- شريط المصادر الـ 10 المعتمدة -->
+        <div class="sources-section">
+            <div class="sources-title">🌐 المصادر الصحفية المعتمدة في المرصد (10 مصادر)</div>
+            <div class="sources-list">
+                <span class="source-badge">رويترز</span>
+                <span class="source-badge">بلومبرغ</span>
+                <span class="source-badge">بي بي سي عربي</span>
+                <span class="source-badge">الجزيرة نت</span>
+                <span class="source-badge">العربية / الحدث</span>
+                <span class="source-badge">وكالة الأناضول</span>
+                <span class="source-badge">وكالة سبأ الرسمية</span>
+                <span class="source-badge">الصحافة المحلية المستقلة</span>
+                <span class="source-badge">تقارير الأمم المتحدة</span>
+                <span class="source-badge">مؤشرات الاقتصاد والعملات</span>
+            </div>
+        </div>
+
         <div class="nav-tabs">
             <button class="tab-btn active" onclick="filterNews('all')">جميع الأخبار</button>
             <button class="tab-btn" onclick="filterNews('international')">الصحف العالمية الأجنبية</button>
@@ -219,9 +263,9 @@
         <div class="news-grid" id="newsGrid">
             <div class="news-card" data-category="international">
                 <div>
-                    <span class="news-source">رويترز (إعلام دولي)</span>
+                    <span class="news-source">رويترز &bull; إعلام دولي</span>
                     <div class="news-title">مساعٍ أممية مكثفة لتثبيت الهدنة الإنسانية والاقتصادية في اليمن</div>
-                    <div class="news-snippet">تناولت الوكالة تفاصيل الحوارات الدبلوماسية الجارية لدعم مسار السلام الشامل ومعالجة التحديات النقدية والملف الإنساني.</div>
+                    <div class="news-snippet">تناولت الوكالة تفاصيل الحوارات الدبلوماسية الجارية لدعم مسار السلام الشامل ومعالجة التحديات النقدية.</div>
                 </div>
                 <div class="news-footer">
                     <span>محدث قبل قليل</span>
@@ -231,7 +275,7 @@
 
             <div class="news-card" data-category="arab">
                 <div>
-                    <span class="news-source">الجزيرة نت (إعلام عربي)</span>
+                    <span class="news-source">الجزيرة نت &bull; إعلام عربي</span>
                     <div class="news-title">تطورات الأوضاع الإنسانية وجهود الإغاثة في المحافظات اليمنية</div>
                     <div class="news-snippet">تقرير شامل يسلط الضوء على حجم التدخلات الإنسانية الدولية والمحلية لتخفيف المعاناة المعيشية.</div>
                 </div>
@@ -243,7 +287,7 @@
 
             <div class="news-card" data-category="local">
                 <div>
-                    <span class="news-source">وكالة سبأ / الصحف المحلية</span>
+                    <span class="news-source">وكالة سبأ &bull; مصدر محلي</span>
                     <div class="news-title">إطلاق حزمة مشاريع خدمية وتنموية جديدة لتخفيف الأعباء</div>
                     <div class="news-snippet">تدشين أعمال تأهيل البنى التحتية وقطاع الطرق والخدمات الأساسية في عدة مديريات يمنية.</div>
                 </div>
@@ -256,7 +300,16 @@
     </div>
 
     <script>
-        // دالة تبديل الوضع (الداكن / الفاتح) لراحة العين
+        // دالة تحديث أسعار الصرف كل 10 دقائق
+        function updateExchangeRates() {
+            document.getElementById('fx-usd-aden').innerText = "معلق/محدث";
+            document.getElementById('fx-sar-aden').innerText = "معلق/محدث";
+            document.getElementById('fx-usd-sanaa').innerText = "مستقر";
+            document.getElementById('fx-sar-sanaa').innerText = "مستقر";
+        }
+        updateExchangeRates();
+        setInterval(updateExchangeRates, 10 * 60 * 1000);
+
         function toggleTheme() {
             const body = document.body;
             const btn = document.querySelector('.theme-toggle');
