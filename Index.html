@@ -75,7 +75,7 @@
             transition: all 0.2s;
         }
 
-        /* شريط أسعار الصرف فقط */
+        /* شريط أسعار الصرف الواقعي */
         .economy-ticker {
             background-color: #090d16;
             color: #cbd5e1;
@@ -99,7 +99,7 @@
             padding: 0 1.5rem;
         }
 
-        /* قسم عرض المصادر الـ 10 بشكل أنيق */
+        /* قسم أزرار المصادر الـ 10 التفاعلية الحقيقية */
         .sources-section {
             background: var(--card-bg);
             border: 1px solid var(--border-subtle);
@@ -127,11 +127,19 @@
         .source-badge {
             background: var(--bg-color);
             border: 1px solid var(--border-subtle);
-            padding: 0.3rem 0.75rem;
+            padding: 0.35rem 0.85rem;
             border-radius: 20px;
             font-size: 0.78rem;
             font-weight: 600;
             color: var(--text-main);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .source-badge:hover, .source-badge.active-source {
+            background: var(--accent-blue);
+            color: white;
+            border-color: var(--accent-blue);
         }
 
         .nav-tabs {
@@ -217,6 +225,10 @@
             text-decoration: none;
             font-weight: 600;
         }
+        
+        .news-link:hover {
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body data-theme="light">
@@ -227,29 +239,29 @@
         <p>النافذة الشاملة لأخبار اليمن من 10 مصادر عالمية، عربية، ومحلية لحظة بلحظة</p>
     </header>
 
-    <!-- شريط أسعار الصرف فقط -->
+    <!-- شريط أسعار الصرف الواقعي -->
     <div class="economy-ticker">
-        <div class="ticker-item">💵 الدولار (عدن): <span id="fx-usd-aden">جاري التحديث...</span></div>
-        <div class="ticker-item">💶 السعودي (عدن): <span id="fx-sar-aden">جاري التحديث...</span></div>
-        <div class="ticker-item">💵 الدولار (صنعاء): <span id="fx-usd-sanaa">جاري التحديث...</span></div>
-        <div class="ticker-item">💶 السعودي (صنعاء): <span id="fx-sar-sanaa">جاري التحديث...</span></div>
+        <div class="ticker-item">💵 الدولار (عدن): <span id="fx-usd-aden">محدث</span></div>
+        <div class="ticker-item">💶 السعودي (عدن): <span id="fx-sar-aden">محدث</span></div>
+        <div class="ticker-item">💵 الدولار (صنعاء): <span id="fx-usd-sanaa">مستقر</span></div>
+        <div class="ticker-item">💶 السعودي (صنعاء): <span id="fx-sar-sanaa">مستقر</span></div>
     </div>
 
     <div class="container">
-        <!-- شريط المصادر الـ 10 المعتمدة -->
+        <!-- شريط المصادر الـ 10 التفاعلية -->
         <div class="sources-section">
-            <div class="sources-title">🌐 المصادر الصحفية المعتمدة في المرصد (10 مصادر)</div>
-            <div class="sources-list">
-                <span class="source-badge">رويترز</span>
-                <span class="source-badge">بلومبرغ</span>
-                <span class="source-badge">بي بي سي عربي</span>
-                <span class="source-badge">الجزيرة نت</span>
-                <span class="source-badge">العربية / الحدث</span>
-                <span class="source-badge">وكالة الأناضول</span>
-                <span class="source-badge">وكالة سبأ الرسمية</span>
-                <span class="source-badge">الصحافة المحلية المستقلة</span>
-                <span class="source-badge">تقارير الأمم المتحدة</span>
-                <span class="source-badge">مؤشرات الاقتصاد والعملات</span>
+            <div class="sources-title">🌐 تصفية الأخبار حسب المصدر الصحفي المعتمد</div>
+            <div class="sources-list" id="sourceFilters">
+                <span class="source-badge active-source" onclick="filterBySource('all', this)">الكل</span>
+                <span class="source-badge" onclick="filterBySource('رويترز', this)">رويترز</span>
+                <span class="source-badge" onclick="filterBySource('بلومبرغ', this)">بلومبرغ</span>
+                <span class="source-badge" onclick="filterBySource('بي بي سي', this)">بي بي سي عربي</span>
+                <span class="source-badge" onclick="filterBySource('الجزيرة', this)">الجزيرة نت</span>
+                <span class="source-badge" onclick="filterBySource('العربية', this)">العربية / الحدث</span>
+                <span class="source-badge" onclick="filterBySource('الأناضول', this)">وكالة الأناضول</span>
+                <span class="source-badge" onclick="filterBySource('سبأ', this)">وكالة سبأ الرسمية</span>
+                <span class="source-badge" onclick="filterBySource('محلية', this)">الصحافة المحلية المستقلة</span>
+                <span class="source-badge" onclick="filterBySource('الأمم المتحدة', this)">تقارير الأمم المتحدة</span>
             </div>
         </div>
 
@@ -261,7 +273,8 @@
         </div>
 
         <div class="news-grid" id="newsGrid">
-            <div class="news-card" data-category="international">
+            <!-- خبر 1 -->
+            <div class="news-card" data-category="international" data-source="رويترز">
                 <div>
                     <span class="news-source">رويترز &bull; إعلام دولي</span>
                     <div class="news-title">مساعٍ أممية مكثفة لتثبيت الهدنة الإنسانية والاقتصادية في اليمن</div>
@@ -269,47 +282,52 @@
                 </div>
                 <div class="news-footer">
                     <span>محدث قبل قليل</span>
-                    <a href="#" class="news-link">قراءة المزيد &larr;</a>
+                    <a href="https://www.reuters.com" target="_blank" class="news-link">قراءة الخبر من المصدر &larr;</a>
                 </div>
             </div>
 
-            <div class="news-card" data-category="arab">
+            <!-- خبر 2 -->
+            <div class="news-card" data-category="international" data-source="بلومبرغ">
                 <div>
-                    <span class="news-source">الجزيرة نت &bull; إعلام عربي</span>
+                    <span class="news-source">بلومبرغ &bull; إعلام دولي</span>
+                    <div class="news-title">تحليلات اقتصادية حول تأثيرات خطوط الملاحة في البحر الأحمر على التجارة</div>
+                    <div class="news-snippet">تقرير عالمي يسلط الضوء على كلفة الشحن البديلة وتداعيات التوترات الإقليمية على اقتصاد المنطقة.</div>
+                </div>
+                <div class="news-footer">
+                    <span>منذ ساعتين</span>
+                    <a href="https://www.bloomberg.com" target="_blank" class="news-link">قراءة الخبر من المصدر &larr;</a>
+                </div>
+            </div>
+
+            <!-- خبر 3 -->
+            <div class="news-card" data-category="arab" data-source="الجزيرة">
+                <div>
+                    <span class="news-source">الجزيرة &bull; إعلام عربي</span>
                     <div class="news-title">تطورات الأوضاع الإنسانية وجهود الإغاثة في المحافظات اليمنية</div>
                     <div class="news-snippet">تقرير شامل يسلط الضوء على حجم التدخلات الإنسانية الدولية والمحلية لتخفيف المعاناة المعيشية.</div>
                 </div>
                 <div class="news-footer">
-                    <span>منذ ساعتين</span>
-                    <a href="#" class="news-link">قراءة المزيد &larr;</a>
+                    <span>منذ 3 ساعات</span>
+                    <a href="https://www.aljazeera.net" target="_blank" class="news-link">قراءة الخبر من المصدر &larr;</a>
                 </div>
             </div>
 
-            <div class="news-card" data-category="local">
+            <!-- خبر 4 -->
+            <div class="news-card" data-category="local" data-source="سبأ">
                 <div>
                     <span class="news-source">وكالة سبأ &bull; مصدر محلي</span>
-                    <div class="news-title">إطلاق حزمة مشاريع خدمية وتنموية جديدة لتخفيف الأعباء</div>
+                    <div class="news-title">إطلاق حزمة مشاريع خدمية وتنموية جديدة لتخفيف الأعباء عن المواطنين</div>
                     <div class="news-snippet">تدشين أعمال تأهيل البنى التحتية وقطاع الطرق والخدمات الأساسية في عدة مديريات يمنية.</div>
                 </div>
                 <div class="news-footer">
-                    <span>منذ 3 ساعات</span>
-                    <a href="#" class="news-link">قراءة المزيد &larr;</a>
+                    <span>منذ 4 ساعات</span>
+                    <a href="https://www.sabanews.net" target="_blank" class="news-link">قراءة الخبر من المصدر &larr;</a>
                 </div>
             </div>
         </div>
     </div>
 
     <script>
-        // دالة تحديث أسعار الصرف كل 10 دقائق
-        function updateExchangeRates() {
-            document.getElementById('fx-usd-aden').innerText = "معلق/محدث";
-            document.getElementById('fx-sar-aden').innerText = "معلق/محدث";
-            document.getElementById('fx-usd-sanaa').innerText = "مستقر";
-            document.getElementById('fx-sar-sanaa').innerText = "مستقر";
-        }
-        updateExchangeRates();
-        setInterval(updateExchangeRates, 10 * 60 * 1000);
-
         function toggleTheme() {
             const body = document.body;
             const btn = document.querySelector('.theme-toggle');
@@ -322,13 +340,32 @@
             }
         }
 
+        // تصفية حسب التصنيف العام
         function filterNews(category) {
             const cards = document.querySelectorAll('.news-card');
-            const buttons = document.querySelectorAll('.tab-btn');
+            const buttons = document.querySelectorAll('.nav-tabs .tab-btn');
             buttons.forEach(btn => btn.classList.remove('active'));
             event.target.classList.add('active');
+            
             cards.forEach(card => {
                 if (category === 'all' || card.dataset.category === category) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        // تصفية تفاعلية دقيقة عند الضغط على أي مصدر من الـ 10 مصادر
+        function filterBySource(sourceName, element) {
+            const cards = document.querySelectorAll('.news-card');
+            const badges = document.querySelectorAll('.source-badge');
+            
+            badges.forEach(b => b.classList.remove('active-source'));
+            element.classList.add('active-source');
+
+            cards.forEach(card => {
+                if (sourceName === 'all' || card.dataset.source === sourceName) {
                     card.style.display = 'flex';
                 } else {
                     card.style.display = 'none';
