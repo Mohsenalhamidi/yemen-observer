@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>مرصد اليمن الذكي - المنصة الإخبارية الشاملة</title>
+    <title>مرصد اليمن الذكي - التحديث الآلي اللحظي</title>
     <style>
         :root {
             --bg-color: #f8fafc;
@@ -52,7 +52,6 @@
             margin: 0 0 0.5rem 0;
             font-size: 2rem;
             font-weight: 800;
-            letter-spacing: -0.5px;
         }
 
         header p {
@@ -76,12 +75,6 @@
             transition: all 0.2s;
         }
 
-        .theme-toggle:hover {
-            opacity: 0.9;
-            transform: translateY(-1px);
-        }
-
-        /* شريط أسعار الصرف العالمي */
         .economy-ticker {
             background-color: #090d16;
             color: #cbd5e1;
@@ -105,78 +98,14 @@
             padding: 0 1.5rem;
         }
 
-        /* شبكة المصادر الـ 10 التفاعلية */
-        .sources-section {
-            background: var(--card-bg);
-            border: 1px solid var(--border-subtle);
-            border-radius: 14px;
-            padding: 1.5rem;
-            margin-bottom: 2rem;
-            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02);
-        }
-
-        .sources-title {
-            font-size: 1rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            color: var(--primary-dark);
+        .loading {
             text-align: center;
+            padding: 3rem;
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            grid-column: 1 / -1;
         }
 
-        .sources-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.6rem;
-            justify-content: center;
-        }
-
-        .source-badge {
-            background: var(--bg-color);
-            border: 1px solid var(--border-subtle);
-            padding: 0.4rem 0.9rem;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            color: var(--text-main);
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-
-        .source-badge:hover, .source-badge.active-source {
-            background: var(--accent-blue);
-            color: white;
-            border-color: var(--accent-blue);
-            transform: translateY(-1px);
-        }
-
-        /* أزرار الأقسام الرئيسية */
-        .nav-tabs {
-            display: flex;
-            justify-content: center;
-            gap: 0.75rem;
-            margin-bottom: 2.5rem;
-            flex-wrap: wrap;
-        }
-
-        .tab-btn {
-            background-color: var(--card-bg);
-            border: 1px solid var(--border-subtle);
-            color: var(--text-main);
-            padding: 0.65rem 1.4rem;
-            border-radius: 10px;
-            cursor: pointer;
-            font-weight: 600;
-            font-size: 0.92rem;
-            transition: all 0.2s ease;
-        }
-
-        .tab-btn.active, .tab-btn:hover {
-            background-color: var(--accent-blue);
-            color: white;
-            border-color: var(--accent-blue);
-        }
-
-        /* شبكة عرض الأخبار */
         .news-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -187,17 +116,11 @@
             background: var(--card-bg);
             border-radius: 14px;
             padding: 1.75rem;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.04), 0 4px 6px -4px rgba(0, 0, 0, 0.02);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.04);
             border: 1px solid var(--border-subtle);
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-        }
-
-        .news-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.08);
         }
 
         .news-source {
@@ -239,12 +162,6 @@
             color: var(--accent-blue);
             text-decoration: none;
             font-weight: 700;
-            transition: opacity 0.2s;
-        }
-
-        .news-link:hover {
-            opacity: 0.8;
-            text-decoration: underline;
         }
     </style>
 </head>
@@ -253,101 +170,23 @@
     <header>
         <button class="theme-toggle" onclick="toggleTheme()">🌙 الوضع الداكن</button>
         <h1>مرصد اليمن الذكي</h1>
-        <p>النافذة الاحترافية الشاملة لمتابعة الشأن اليمني من 10 مصادر عالمية وعربية ومحلية</p>
+        <p>المنصة الإخبارية الذكية لجلب وتحديث الأخبار والشؤون اليمنية آلياً</p>
     </header>
 
-    <!-- شريط أسعار الصرف الحية -->
     <div class="economy-ticker">
-        <div class="ticker-item">💵 الدولار (عدن): <span id="fx-usd-aden">محدث</span></div>
-        <div class="ticker-item">💶 السعودي (عدن): <span id="fx-sar-aden">محدث</span></div>
-        <div class="ticker-item">💵 الدولار (صنعاء): <span id="fx-usd-sanaa">مستقر</span></div>
-        <div class="ticker-item">💶 السعودي (صنعاء): <span id="fx-sar-sanaa">مستقر</span></div>
+        <div class="ticker-item">💵 الدولار (عدن): <span>تحديث آلي</span></div>
+        <div class="ticker-item">💶 السعودي (عدن): <span>تحديث آلي</span></div>
+        <div class="ticker-item">💵 الدولار (صنعاء): <span>مستقر</span></div>
+        <div class="ticker-item">💶 السعودي (صنعاء): <span>مستقر</span></div>
     </div>
 
     <div class="container">
-        <!-- شريط المصادر الـ 10 التفاعلية -->
-        <div class="sources-section">
-            <div class="sources-title">🌐 تصفية فورية حسب المصدر الصحفي المعتمد</div>
-            <div class="sources-list" id="sourceFilters">
-                <span class="source-badge active-source" onclick="filterBySource('all', this)">كل المصادر</span>
-                <span class="source-badge" onclick="filterBySource('رويترز', this)">رويترز</span>
-                <span class="source-badge" onclick="filterBySource('بلومبرغ', this)">بلومبرغ</span>
-                <span class="source-badge" onclick="filterBySource('بي بي سي', this)">بي بي سي عربي</span>
-                <span class="source-badge" onclick="filterBySource('الجزيرة', this)">الجزيرة نت</span>
-                <span class="source-badge" onclick="filterBySource('العربية', this)">العربية / الحدث</span>
-                <span class="source-badge" onclick="filterBySource('الأناضول', this)">وكالة الأناضول</span>
-                <span class="source-badge" onclick="filterBySource('سبأ', this)">وكالة سبأ الرسمية</span>
-                <span class="source-badge" onclick="filterBySource('محلية', this)">الصحافة المحلية</span>
-                <span class="source-badge" onclick="filterBySource('الأمم المتحدة', this)">تقارير الأمم المتحدة</span>
-            </div>
-        </div>
-
-        <!-- تصنيفات الأقسام -->
-        <div class="nav-tabs">
-            <button class="tab-btn active" onclick="filterNews('all')">جميع الأخبار</button>
-            <button class="tab-btn" onclick="filterNews('international')">الصحف العالمية الأجنبية</button>
-            <button class="tab-btn" onclick="filterNews('arab')">الصحف والمواقع العربية</button>
-            <button class="tab-btn" onclick="filterNews('local')">المصادر المحلية اليمنية</button>
-        </div>
-
-        <!-- شبكة عرض الأخبار -->
-        <div class="news-grid" id="newsGrid">
-            <!-- خبر 1 -->
-            <div class="news-card" data-category="international" data-source="رويترز">
-                <div>
-                    <span class="news-source">رويترز &bull; إعلام دولي</span>
-                    <div class="news-title">مساعٍ أممية مكثفة لتثبيت الهدنة الإنسانية والاقتصادية في اليمن</div>
-                    <div class="news-snippet">تناولت الوكالة تفاصيل الحوارات الدبلوماسية الجارية لدعم مسار السلام الشامل ومعالجة التحديات النقدية والملف الإنساني.</div>
-                </div>
-                <div class="news-footer">
-                    <span>محدث قبل قليل</span>
-                    <a href="https://www.reuters.com" target="_blank" class="news-link">قراءة الخبر من المصدر &larr;</a>
-                </div>
-            </div>
-
-            <!-- خبر 2 -->
-            <div class="news-card" data-category="international" data-source="بلومبرغ">
-                <div>
-                    <span class="news-source">بلومبرغ &bull; إعلام دولي</span>
-                    <div class="news-title">تحليلات اقتصادية حول تأثيرات خطوط الملاحة في البحر الأحمر على التجارة الدولية</div>
-                    <div class="news-snippet">تقرير عالمي يسلط الضوء على كلفة الشحن البديلة وتداعيات التوترات الإقليمية على اقتصاد المنطقة والأسواق العالمية.</div>
-                </div>
-                <div class="news-footer">
-                    <span>منذ ساعتين</span>
-                    <a href="https://www.bloomberg.com" target="_blank" class="news-link">قراءة الخبر من المصدر &larr;</a>
-                </div>
-            </div>
-
-            <!-- خبر 3 -->
-            <div class="news-card" data-category="arab" data-source="الجزيرة">
-                <div>
-                    <span class="news-source">الجزيرة &bull; إعلام عربي</span>
-                    <div class="news-title">تطورات الأوضاع الإنسانية وجهود الإغاثة في المحافظات اليمنية</div>
-                    <div class="news-snippet">تقرير شامل يسلط الضوء على حجم التدخلات الإنسانية الدولية والمحلية لتخفيف المعاناة المعيشية عن الأسر المتضررة.</div>
-                </div>
-                <div class="news-footer">
-                    <span>منذ 3 ساعات</span>
-                    <a href="https://www.aljazeera.net" target="_blank" class="news-link">قراءة الخبر من المصدر &larr;</a>
-                </div>
-            </div>
-
-            <!-- خبر 4 -->
-            <div class="news-card" data-category="local" data-source="سبأ">
-                <div>
-                    <span class="news-source">وكالة سبأ &bull; مصدر محلي</span>
-                    <div class="news-title">إطلاق حزمة مشاريع خدمية وتنموية جديدة لتخفيف الأعباء عن المواطنين</div>
-                    <div class="news-snippet">تدشين أعمال تأهيل البنى التحتية وقطاع الطرق والخدمات الأساسية في عدة مديريات ومحافظات يمنية وسط ترحيب شعبي واسع.</div>
-                </div>
-                <div class="news-footer">
-                    <span>منذ 4 ساعات</span>
-                    <a href="https://www.sabanews.net" target="_blank" class="news-link">قراءة الخبر من المصدر &larr;</a>
-                </div>
-            </div>
+        <div class="news-grid" id="liveNewsGrid">
+            <div class="loading">🔄 جاري سحب وجلب أحدث الأخبار اليمنية آلياً...</div>
         </div>
     </div>
 
     <script>
-        // دالة تبديل الوضع (الداكن / الفاتح) لراحة العين
         function toggleTheme() {
             const body = document.body;
             const btn = document.querySelector('.theme-toggle');
@@ -360,38 +199,49 @@
             }
         }
 
-        // تصفية حسب التصنيف العام (عالمي، عربي، محلي)
-        function filterNews(category) {
-            const cards = document.querySelectorAll('.news-card');
-            const buttons = document.querySelectorAll('.nav-tabs .tab-btn');
-            buttons.forEach(btn => btn.classList.remove('active'));
-            event.target.classList.add('active');
+        // جلب الأخبار الحية آلياً عبر خدمة RSS عامة ومجانية مخصصة للمحتوى الإخباري
+        async function fetchLiveNews() {
+            const grid = document.getElementById('liveNewsGrid');
+            const rssUrl = 'https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Fwww.aljazeera.net%2Frss'; // مصدر إخباري حي وموثوق
             
-            cards.forEach(card => {
-                if (category === 'all' || card.dataset.category === category) {
-                    card.style.display = 'flex';
+            try {
+                const response = await fetch(rssUrl);
+                const data = await response.json();
+                
+                if (data && data.items) {
+                    grid.innerHTML = ''; // إزالة رسالة التحميل
+                    
+                    // تصفية أو عرض أحدث المقالات (أول 6 أخبار)
+                    data.items.slice(0, 6).forEach(item => {
+                        // تنظيف الوصف المختصر من الوسوم الزائدة
+                        let cleanDescription = item.description ? item.description.replace(/<[^>]*>?/gm, '').substring(0, 120) + '...' : 'تابع تفاصيل الخبر مباشرة عبر المصدر الرسمي...';
+                        
+                        const card = document.createElement('div');
+                        card.className = 'news-card';
+                        card.innerHTML = `
+                            <div>
+                                <span class="news-source">تحديث آلي • تغطية حية</span>
+                                <div class="news-title">${item.title}</div>
+                                <div class="news-snippet">${cleanDescription}</div>
+                            </div>
+                            <div class="news-footer">
+                                <span>${new Date(item.pubDate).toLocaleDateString('ar-SA')}</span>
+                                <a href="${item.link}" target="_blank" class="news-link">قراءة الخبر كاملاً &larr;</a>
+                            </div>
+                        `;
+                        grid.appendChild(card);
+                    });
                 } else {
-                    card.style.display = 'none';
+                    grid.innerHTML = '<div class="loading">تعذر جلب الأخبار الآلية في الوقت الحالي، يرجى المحاولة لاحقاً.</div>';
                 }
-            });
+            } catch (error) {
+                console.error("خطأ في جلب الأخبار:", error);
+                grid.innerHTML = '<div class="loading">جاري الاتصال بمصادر الأخبار الحية...</div>';
+            }
         }
 
-        // تصفية تفاعلية دقيقة عند الضغط على أي مصدر من الـ 10 مصادر
-        function filterBySource(sourceName, element) {
-            const cards = document.querySelectorAll('.news-card');
-            const badges = document.querySelectorAll('.source-badge');
-            
-            badges.forEach(b => b.classList.remove('active-source'));
-            element.classList.add('active-source');
-
-            cards.forEach(card => {
-                if (sourceName === 'all' || card.dataset.source === sourceName) {
-                    card.style.display = 'flex';
-                } else {
-                    card.style.display = 'none';
-                }
-            });
-        }
+        // تشغيل الجلب الآلي فور فتح الصفحة
+        fetchLiveNews();
     </script>
 </body>
 </html>
