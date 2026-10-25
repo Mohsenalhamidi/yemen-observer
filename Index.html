@@ -6,7 +6,7 @@
     <title>مرصد اليمن الذكي - المنصة الإخبارية الشاملة</title>
     <style>
         :root {
-            --bg-color: #f1f5f9;
+            --bg-color: #f8fafc;
             --card-bg: #ffffff;
             --primary-dark: #0f172a;
             --accent-blue: #0284c7;
@@ -42,44 +42,50 @@
         header {
             background-color: var(--primary-dark);
             color: var(--card-bg);
-            padding: 2rem 1rem;
+            padding: 2.5rem 1rem;
             text-align: center;
-            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
             position: relative;
         }
 
         header h1 {
             margin: 0 0 0.5rem 0;
-            font-size: 1.8rem;
-            font-weight: 700;
+            font-size: 2rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
         }
 
         header p {
             margin: 0;
             color: var(--text-muted);
-            font-size: 0.95rem;
+            font-size: 1rem;
         }
 
         .theme-toggle {
             position: absolute;
-            top: 1rem;
-            left: 1rem;
+            top: 1.25rem;
+            left: 1.25rem;
             background: var(--card-bg);
             color: var(--text-main);
             border: 1px solid var(--border-subtle);
-            padding: 0.4rem 0.8rem;
-            border-radius: 6px;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
             cursor: pointer;
             font-size: 0.85rem;
             font-weight: 600;
             transition: all 0.2s;
         }
 
-        /* شريط أسعار الصرف الواقعي */
+        .theme-toggle:hover {
+            opacity: 0.9;
+            transform: translateY(-1px);
+        }
+
+        /* شريط أسعار الصرف العالمي */
         .economy-ticker {
             background-color: #090d16;
             color: #cbd5e1;
-            padding: 0.75rem 1rem;
+            padding: 0.85rem 1rem;
             font-size: 0.85rem;
             display: flex;
             flex-wrap: wrap;
@@ -89,30 +95,30 @@
         }
 
         .ticker-item span {
-            font-weight: 600;
+            font-weight: 700;
             color: #38bdf8;
         }
 
         .container {
-            max-width: 1100px;
-            margin: 2rem auto;
+            max-width: 1200px;
+            margin: 2.5rem auto;
             padding: 0 1.5rem;
         }
 
-        /* قسم أزرار المصادر الـ 10 التفاعلية الحقيقية */
+        /* شبكة المصادر الـ 10 التفاعلية */
         .sources-section {
             background: var(--card-bg);
             border: 1px solid var(--border-subtle);
-            border-radius: 12px;
-            padding: 1.25rem;
+            border-radius: 14px;
+            padding: 1.5rem;
             margin-bottom: 2rem;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02);
         }
 
         .sources-title {
-            font-size: 0.95rem;
+            font-size: 1rem;
             font-weight: 700;
-            margin-bottom: 0.75rem;
+            margin-bottom: 1rem;
             color: var(--primary-dark);
             text-align: center;
         }
@@ -120,33 +126,35 @@
         .sources-list {
             display: flex;
             flex-wrap: wrap;
-            gap: 0.5rem;
+            gap: 0.6rem;
             justify-content: center;
         }
 
         .source-badge {
             background: var(--bg-color);
             border: 1px solid var(--border-subtle);
-            padding: 0.35rem 0.85rem;
+            padding: 0.4rem 0.9rem;
             border-radius: 20px;
-            font-size: 0.78rem;
+            font-size: 0.8rem;
             font-weight: 600;
             color: var(--text-main);
             cursor: pointer;
-            transition: all 0.2s;
+            transition: all 0.2s ease;
         }
 
         .source-badge:hover, .source-badge.active-source {
             background: var(--accent-blue);
             color: white;
             border-color: var(--accent-blue);
+            transform: translateY(-1px);
         }
 
+        /* أزرار الأقسام الرئيسية */
         .nav-tabs {
             display: flex;
             justify-content: center;
             gap: 0.75rem;
-            margin-bottom: 2rem;
+            margin-bottom: 2.5rem;
             flex-wrap: wrap;
         }
 
@@ -154,11 +162,11 @@
             background-color: var(--card-bg);
             border: 1px solid var(--border-subtle);
             color: var(--text-main);
-            padding: 0.6rem 1.25rem;
-            border-radius: 8px;
+            padding: 0.65rem 1.4rem;
+            border-radius: 10px;
             cursor: pointer;
-            font-weight: 500;
-            font-size: 0.9rem;
+            font-weight: 600;
+            font-size: 0.92rem;
             transition: all 0.2s ease;
         }
 
@@ -168,65 +176,74 @@
             border-color: var(--accent-blue);
         }
 
+        /* شبكة عرض الأخبار */
         .news-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
-            gap: 1.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 1.75rem;
         }
 
         .news-card {
             background: var(--card-bg);
-            border-radius: 12px;
-            padding: 1.5rem;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.03);
+            border-radius: 14px;
+            padding: 1.75rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.04), 0 4px 6px -4px rgba(0, 0, 0, 0.02);
             border: 1px solid var(--border-subtle);
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .news-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.08);
         }
 
         .news-source {
             font-size: 0.75rem;
             background: var(--tag-bg);
             color: var(--tag-text);
-            padding: 0.3rem 0.6rem;
+            padding: 0.35rem 0.75rem;
             border-radius: 6px;
             align-self: flex-start;
-            margin-bottom: 1rem;
-            font-weight: 600;
+            margin-bottom: 1.1rem;
+            font-weight: 700;
         }
 
         .news-title {
-            font-size: 1.1rem;
+            font-size: 1.15rem;
             font-weight: 700;
-            margin-bottom: 0.75rem;
+            margin-bottom: 0.85rem;
             color: var(--primary-dark);
-            line-height: 1.5;
+            line-height: 1.6;
         }
 
         .news-snippet {
-            font-size: 0.92rem;
+            font-size: 0.95rem;
             color: var(--text-muted);
-            margin-bottom: 1.25rem;
+            margin-bottom: 1.5rem;
         }
 
         .news-footer {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            font-size: 0.8rem;
+            font-size: 0.82rem;
             border-top: 1px solid var(--border-subtle);
-            padding-top: 0.85rem;
+            padding-top: 1rem;
             color: var(--text-muted);
         }
 
         .news-link {
             color: var(--accent-blue);
             text-decoration: none;
-            font-weight: 600;
+            font-weight: 700;
+            transition: opacity 0.2s;
         }
-        
+
         .news-link:hover {
+            opacity: 0.8;
             text-decoration: underline;
         }
     </style>
@@ -236,10 +253,10 @@
     <header>
         <button class="theme-toggle" onclick="toggleTheme()">🌙 الوضع الداكن</button>
         <h1>مرصد اليمن الذكي</h1>
-        <p>النافذة الشاملة لأخبار اليمن من 10 مصادر عالمية، عربية، ومحلية لحظة بلحظة</p>
+        <p>النافذة الاحترافية الشاملة لمتابعة الشأن اليمني من 10 مصادر عالمية وعربية ومحلية</p>
     </header>
 
-    <!-- شريط أسعار الصرف الواقعي -->
+    <!-- شريط أسعار الصرف الحية -->
     <div class="economy-ticker">
         <div class="ticker-item">💵 الدولار (عدن): <span id="fx-usd-aden">محدث</span></div>
         <div class="ticker-item">💶 السعودي (عدن): <span id="fx-sar-aden">محدث</span></div>
@@ -250,9 +267,9 @@
     <div class="container">
         <!-- شريط المصادر الـ 10 التفاعلية -->
         <div class="sources-section">
-            <div class="sources-title">🌐 تصفية الأخبار حسب المصدر الصحفي المعتمد</div>
+            <div class="sources-title">🌐 تصفية فورية حسب المصدر الصحفي المعتمد</div>
             <div class="sources-list" id="sourceFilters">
-                <span class="source-badge active-source" onclick="filterBySource('all', this)">الكل</span>
+                <span class="source-badge active-source" onclick="filterBySource('all', this)">كل المصادر</span>
                 <span class="source-badge" onclick="filterBySource('رويترز', this)">رويترز</span>
                 <span class="source-badge" onclick="filterBySource('بلومبرغ', this)">بلومبرغ</span>
                 <span class="source-badge" onclick="filterBySource('بي بي سي', this)">بي بي سي عربي</span>
@@ -260,11 +277,12 @@
                 <span class="source-badge" onclick="filterBySource('العربية', this)">العربية / الحدث</span>
                 <span class="source-badge" onclick="filterBySource('الأناضول', this)">وكالة الأناضول</span>
                 <span class="source-badge" onclick="filterBySource('سبأ', this)">وكالة سبأ الرسمية</span>
-                <span class="source-badge" onclick="filterBySource('محلية', this)">الصحافة المحلية المستقلة</span>
+                <span class="source-badge" onclick="filterBySource('محلية', this)">الصحافة المحلية</span>
                 <span class="source-badge" onclick="filterBySource('الأمم المتحدة', this)">تقارير الأمم المتحدة</span>
             </div>
         </div>
 
+        <!-- تصنيفات الأقسام -->
         <div class="nav-tabs">
             <button class="tab-btn active" onclick="filterNews('all')">جميع الأخبار</button>
             <button class="tab-btn" onclick="filterNews('international')">الصحف العالمية الأجنبية</button>
@@ -272,13 +290,14 @@
             <button class="tab-btn" onclick="filterNews('local')">المصادر المحلية اليمنية</button>
         </div>
 
+        <!-- شبكة عرض الأخبار -->
         <div class="news-grid" id="newsGrid">
             <!-- خبر 1 -->
             <div class="news-card" data-category="international" data-source="رويترز">
                 <div>
                     <span class="news-source">رويترز &bull; إعلام دولي</span>
                     <div class="news-title">مساعٍ أممية مكثفة لتثبيت الهدنة الإنسانية والاقتصادية في اليمن</div>
-                    <div class="news-snippet">تناولت الوكالة تفاصيل الحوارات الدبلوماسية الجارية لدعم مسار السلام الشامل ومعالجة التحديات النقدية.</div>
+                    <div class="news-snippet">تناولت الوكالة تفاصيل الحوارات الدبلوماسية الجارية لدعم مسار السلام الشامل ومعالجة التحديات النقدية والملف الإنساني.</div>
                 </div>
                 <div class="news-footer">
                     <span>محدث قبل قليل</span>
@@ -290,8 +309,8 @@
             <div class="news-card" data-category="international" data-source="بلومبرغ">
                 <div>
                     <span class="news-source">بلومبرغ &bull; إعلام دولي</span>
-                    <div class="news-title">تحليلات اقتصادية حول تأثيرات خطوط الملاحة في البحر الأحمر على التجارة</div>
-                    <div class="news-snippet">تقرير عالمي يسلط الضوء على كلفة الشحن البديلة وتداعيات التوترات الإقليمية على اقتصاد المنطقة.</div>
+                    <div class="news-title">تحليلات اقتصادية حول تأثيرات خطوط الملاحة في البحر الأحمر على التجارة الدولية</div>
+                    <div class="news-snippet">تقرير عالمي يسلط الضوء على كلفة الشحن البديلة وتداعيات التوترات الإقليمية على اقتصاد المنطقة والأسواق العالمية.</div>
                 </div>
                 <div class="news-footer">
                     <span>منذ ساعتين</span>
@@ -304,7 +323,7 @@
                 <div>
                     <span class="news-source">الجزيرة &bull; إعلام عربي</span>
                     <div class="news-title">تطورات الأوضاع الإنسانية وجهود الإغاثة في المحافظات اليمنية</div>
-                    <div class="news-snippet">تقرير شامل يسلط الضوء على حجم التدخلات الإنسانية الدولية والمحلية لتخفيف المعاناة المعيشية.</div>
+                    <div class="news-snippet">تقرير شامل يسلط الضوء على حجم التدخلات الإنسانية الدولية والمحلية لتخفيف المعاناة المعيشية عن الأسر المتضررة.</div>
                 </div>
                 <div class="news-footer">
                     <span>منذ 3 ساعات</span>
@@ -317,7 +336,7 @@
                 <div>
                     <span class="news-source">وكالة سبأ &bull; مصدر محلي</span>
                     <div class="news-title">إطلاق حزمة مشاريع خدمية وتنموية جديدة لتخفيف الأعباء عن المواطنين</div>
-                    <div class="news-snippet">تدشين أعمال تأهيل البنى التحتية وقطاع الطرق والخدمات الأساسية في عدة مديريات يمنية.</div>
+                    <div class="news-snippet">تدشين أعمال تأهيل البنى التحتية وقطاع الطرق والخدمات الأساسية في عدة مديريات ومحافظات يمنية وسط ترحيب شعبي واسع.</div>
                 </div>
                 <div class="news-footer">
                     <span>منذ 4 ساعات</span>
@@ -328,6 +347,7 @@
     </div>
 
     <script>
+        // دالة تبديل الوضع (الداكن / الفاتح) لراحة العين
         function toggleTheme() {
             const body = document.body;
             const btn = document.querySelector('.theme-toggle');
@@ -340,7 +360,7 @@
             }
         }
 
-        // تصفية حسب التصنيف العام
+        // تصفية حسب التصنيف العام (عالمي، عربي، محلي)
         function filterNews(category) {
             const cards = document.querySelectorAll('.news-card');
             const buttons = document.querySelectorAll('.nav-tabs .tab-btn');
